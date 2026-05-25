@@ -5,18 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Sayed Ifti Ahmed — Engineering student by degree, developer by obsession." />
     <title>Sayed Ifti Ahmed | Engineer &amp; Developer</title>
-    <link rel="stylesheet" href="css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Pacifico&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet" />
+    <?!= include('styles') ?>
   </head>
   <body>
-    <!-- Hero -->
+    <nav id="navbar" aria-label="Primary">
+      <div class="nav-pill">
+        <a href="#" data-page="index" class="nav-logo">Ifti</a>
+        <ul class="nav-links" role="list">
+          <li><a href="#" data-page="timeline" class="nav-text-link">timeline</a></li>
+          <li><a href="#" data-page="work"     class="nav-text-link">work</a></li>
+          <li><a href="#" data-page="about"    class="nav-text-link">about</a></li>
+          <li><a href="#" data-page="story"    class="nav-text-link">story</a></li>
+        </ul>
+        <div class="nav-icons">
+          <button class="nav-icon theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
     <header id="home" class="hero">
-      <img src="profile.jpeg" alt="Sayed Ifti Ahmed" class="profile-photo" />
+      <img src="https://xrenes.github.io/ifti/profile.jpeg" alt="Sayed Ifti Ahmed" class="profile-photo" />
       <h1 class="hero-name">Sayed Ifti Ahmed</h1>
       <p class="hero-role">Ongoing engineer and developer</p>
       <p class="hero-bio">
@@ -39,7 +58,6 @@
       </div>
     </header>
 
-    <!-- Current Projects -->
     <section id="portfolio" class="section section-projects">
       <div class="container">
         <h2 class="section-title">Current Projects</h2>
@@ -47,7 +65,7 @@
 
           <a href="https://xrenes.github.io/amber-flow/" target="_blank" rel="noopener noreferrer" class="proj-card">
             <div class="proj-thumb">
-              <img src="amber-flow.png" alt="Amber Flow preview" loading="lazy">
+              <img src="https://xrenes.github.io/ifti/amber-flow.png" alt="Amber Flow preview" loading="lazy">
             </div>
             <div class="proj-info">
               <h3 class="proj-title">Amber Flow</h3>
@@ -57,7 +75,7 @@
 
           <a href="https://xrenes.github.io/Byte-to-Byte/" target="_blank" rel="noopener noreferrer" class="proj-card">
             <div class="proj-thumb">
-              <img src="byte-to-byte.png" alt="Byte to Byte preview" loading="lazy">
+              <img src="https://xrenes.github.io/ifti/byte-to-byte.png" alt="Byte to Byte preview" loading="lazy">
             </div>
             <div class="proj-info">
               <h3 class="proj-title">Byte to Byte</h3>
@@ -67,7 +85,7 @@
 
           <a href="https://www.isaconnect.co/" target="_blank" rel="noopener noreferrer" class="proj-card">
             <div class="proj-thumb">
-              <img src="isa-connect.png" alt="ISA Connect preview" loading="lazy">
+              <img src="https://xrenes.github.io/ifti/isa-connect.png" alt="ISA Connect preview" loading="lazy">
             </div>
             <div class="proj-info">
               <h3 class="proj-title">ISA Connect</h3>
@@ -77,12 +95,11 @@
 
         </div>
         <div class="all-work-row">
-          <a href="work.html" class="all-work-link">All Work &rarr;</a>
+          <a href="#" data-page="work" class="all-work-link">All Work &rarr;</a>
         </div>
       </div>
     </section>
 
-    <!-- Highlight Video Resume -->
     <section id="video-resume" class="section section-video">
       <div class="container">
         <h2 class="section-title">Highlight Video Resume</h2>
@@ -97,13 +114,12 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <p class="footer-copy">&copy; <span id="year"></span> Sayed Ifti Ahmed.</p>
       </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <?!= include('script') ?>
   </body>
 </html>

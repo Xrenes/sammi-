@@ -1,0 +1,70 @@
+<script>
+/* ── Dynamic nav links for Google Apps Script routing ── */
+(function () {
+  var base = window.location.href.split('?')[0];
+  document.querySelectorAll('[data-page]').forEach(function (el) {
+    var page = el.getAttribute('data-page');
+    el.href = page === 'index' ? base : base + '?page=' + page;
+  });
+})();
+
+/* ── Current year ───────────────────────────────────── */
+var yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ── Theme toggle (persisted in localStorage) ───────── */
+var root = document.documentElement;
+var themeToggle = document.querySelector('.theme-toggle');
+
+var stored = localStorage.getItem('theme');
+if (stored === 'light' || stored === 'dark') {
+  root.setAttribute('data-theme', stored);
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', function () {
+    var current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    var next = current === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+}
+
+/* ── Scroll-reveal (with stagger) ──────────────────── */
+var autoTargets = document.querySelectorAll('.card, .proj-card, .section-title, .tl-item, .info-block, .stat-card, .principle');
+autoTargets.forEach(function (el) { el.classList.add('reveal'); });
+
+var revealEls = document.querySelectorAll('.reveal');
+revealEls.forEach(function (el) {
+  var siblings = Array.from((el.parentElement && el.parentElement.children) || []).filter(function (c) {
+    return c.classList && c.classList.contains('reveal');
+  });
+  var idx = siblings.indexOf(el);
+  if (idx >= 0) el.style.setProperty('--reveal-i', idx);
+});
+
+var observer = new IntersectionObserver(
+  function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+);
+revealEls.forEach(function (el) { observer.observe(el); });
+
+/* ── Nav-pill shrink on scroll ──────────────────────── */
+var navPill = document.querySelector('.nav-pill');
+if (navPill) {
+  var lastY = 0;
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    if (Math.abs(y - lastY) < 6) return;
+    navPill.classList.toggle('nav-pill--scrolled', y > 40);
+    lastY = y;
+  }, { passive: true });
+}
+</script>
